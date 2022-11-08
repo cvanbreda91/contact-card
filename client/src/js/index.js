@@ -27,6 +27,7 @@ window.addEventListener('load', function () {
 // Form functionality
 const form = document.getElementById("formToggle");
 const newContactButton = document.getElementById("new-contact");
+const installBtn = document.getElementById('installBtn');
 let submitBtnToUpdate = false;
 let profileId;
 
@@ -99,7 +100,19 @@ window.editCard = (e) => {
   // Toggles the submit button so that it now Updates an existing contact instead of posting a new one
   submitBtnToUpdate = true;
 };
+window.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault();
+  installBtn.style.visibility = 'visible';
+  installBtn.addEventListener('click', () => {
+    event.prompt();
+    installBtn.setAttribute('disabled', true);
+    installBtn.textContent = 'Installed!';
+    });
+  });
 
+  window.addEventListener('appinstalled', (event) => {
+    console.log('👍', 'appinstalled', event);
+  });
 if ('serviceWorker' in navigator) {
   // Use the window load event to keep the page load performant
   window.addEventListener('load', () => {
