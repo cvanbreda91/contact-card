@@ -2,10 +2,7 @@
   "name": "contact-server",
   "version": "1.0.0",
   "description": "",
-  "build": "webpack --mode development",
   "main": "server.js",
-  "dev": "webpack-dev-server",
-  "start": "webpack --watch",
   "scripts": {
     "server": "node server.js"
   },
